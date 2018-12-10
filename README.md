@@ -2,7 +2,7 @@ Img2Cloud CLI
 ===
 一個用於文字介面上傳圖片至 imgur 的工具 for MacOS
 
-### Install
+## Install
 首先你必須將執行檔下載下來，並放置於 `/usr/local/bin/` 中，以利未來在任意地方執行
 ```
 wget https://github.com/s9801077/img2cloud-cli/releases/download/v0.1/img2cloud
@@ -43,7 +43,7 @@ Img2Cloud 沒有開放匿名上傳，所以你必須登入你的 imgur
 Successful!
 ```
 
-### Usage
+## Usage
 可以使用 `img2cloud uploa` 來上傳圖片，參數說明請加上 `-h`
 
 ```
@@ -75,4 +75,9 @@ HTML: <img src='https://i.imgur.com/Z******2.png' title='Imgur'/>
  複製連結類型？ [no]:
  > Link
 ```
+
+## License
+[MIT License](https://github.com/s9801077/img2cloud-cli/blob/master/LICENSE.md)
+
+
 
