@@ -57,7 +57,7 @@ class ImgurService
 
     private function checkAccessToken(): void
     {
-        if (!$this->readyUpload()) {
+        if (!$this->hasLogin()) {
             return;
         }
         $this->client->setAccessToken($this->accessToken);
@@ -68,7 +68,7 @@ class ImgurService
         }
     }
 
-    public function readyUpload(): bool
+    public function hasLogin(): bool
     {
         return isset($this->accessToken);
     }
@@ -85,9 +85,10 @@ class ImgurService
                 $this->setOption($config['clientData']['clientId'], $config['clientData']['clientSecret']);
                 $this->checkAccessToken();
             }
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             $this->accessToken = null;
             $this->saveAccessTokenToFile();
+            error_log($e->getMessage() . $e->getTraceAsString());
             throw new \Exception("驗證失敗，請重新登入。");
         }
     }
@@ -101,6 +102,25 @@ class ImgurService
             'accessToken' => $this->accessToken,
             'clientData'  => $this->clientData,
         ]));
+    }
+
+    public function saveImageLog($res)
+    {
+        try {
+            $fileSystem = new Filesystem();
+            $username = exec("whoami");
+            $filename = "/Users/{$username}/.img2imgur.history.json";
+            $history = [];
+            if ($fileSystem->exists($filename)) {
+                $history = json_decode($fileSystem->get($filename), true);
+            }
+
+            $history[] = $res;
+
+            $fileSystem->put($filename, json_encode($history));
+        } catch (\Exception $e) {
+
+        }
     }
 
     public function upload($img)

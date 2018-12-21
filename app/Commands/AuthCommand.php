@@ -34,7 +34,7 @@ class AuthCommand extends Command
         try {
             $this->imgurService = app()->make(ImgurService::class);
 
-            if (!$this->imgurService->readyUpload() &&
+            if ($this->imgurService->hasLogin() &&
                 !$this->confirm("已登入，請問是否要覆蓋登入紀錄？")
             ) {
                 return;
