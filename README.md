@@ -2,11 +2,14 @@ Img2Cloud CLI
 ===
 一個用於文字介面上傳圖片至 imgur 的工具 for MacOS
 
+## Requirement
+* PHP version "^7.1.3" or greater
+    
 ## Install
 1. 首先你必須將[執行檔](https://github.com/puckwang/img2cloud-cli/releases/download/v0.2/img2cloud)下載下來，並放置於 `/usr/local/bin/` 中，以方便未來在任意地方都可以執行
 ```
 wget https://github.com/s9801077/img2cloud-cli/releases/download/v0.1/img2cloud
-mv img2cloud /usr/local/bin/img2cloud
+cp img2cloud /usr/local/bin/img2cloud
 ```
 
 
@@ -45,7 +48,9 @@ Successful!
 ```
 
 ## Usage Upload
-1. 可以使用 `img2cloud uploa` 來上傳圖片，參數說明請加上 `-h`
+1. 可以使用 `img2cloud uploa` 來上傳圖片，加上 `-h` 來查看參數說明。
+macOS 可以使用 `alt + cmd + C` 去複製完整路徑，然後直接執行，程式會自己抓剪貼簿的路徑。
+如果不想用複製路徑的方式，也可以直接在指令後接上路徑。
 
 ```
 $ img2cloud upload -h
